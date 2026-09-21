@@ -24,7 +24,12 @@
     "category": "Category",
     "quantity": "Quantity",
     "unit": "Unit",
-    "units": ["Cartons", "Pallets", "20ft container", "40ft container"],
+    "units": [
+      "Cartons",
+      "Pallets",
+      "20ft container",
+      "40ft container"
+    ],
     "country": "Destination country",
     "port": "Destination port",
     "incoterm": "Incoterm",
@@ -35,7 +40,12 @@
     "phone": "Phone",
     "brand": "Brand",
     "partnership": "Partnership type",
-    "partnerships": ["Distribution", "Agency", "Private label", "Sourcing"],
+    "partnerships": [
+      "Distribution",
+      "Agency",
+      "Private label",
+      "Sourcing"
+    ],
     "message": "Message",
     "optional": "(optional)",
     "privateLabel": "I'm also interested in this under my own brand (private label).",
@@ -44,7 +54,17 @@
     "note": "No account, no obligation.",
     "success": "Thank you. Your enquiry has reached our team and we will reply by email.",
     "error": "Your enquiry could not be sent. Please email hmhdubai26@gmail.com directly.",
-    "invalid": "Please check the highlighted fields."
+    "invalid": "Please check the highlighted fields.",
+    "sent": "Enquiry sent",
+    "honeypot": "Website",
+    "phCategory": "e.g. Dairy Products",
+    "phQuantity": "e.g. 1,200",
+    "phCountry": "e.g. Kenya",
+    "phPort": "e.g. Mombasa",
+    "phMessage": "Pack configuration, delivery window, anything else we should know",
+    "errRequired": "Required",
+    "errEmail": "Enter a valid email address",
+    "errMessage": "Tell us how we can help"
   },
   "footer": {
     "company": "Company",
@@ -56,5 +76,27 @@
     "terms": "Terms of Use",
     "top": "Back to top",
     "poweredBy": "Powered by"
+  },
+  "header": {
+    "lockup": "GENERAL TRADING",
+    "home": "HMH General Trading, home",
+    "primary": "Primary",
+    "mobile": "Mobile",
+    "showProducts": "Show all products",
+    "arSoon": "Arabic coming soon",
+    "food": "Food",
+    "nonFood": "Non-food",
+    "abuKoora": "Abu Koora",
+    "boon": "Boon",
+    "prices": "Prices are quoted per order, never listed.",
+    "allProducts": "All products"
+  },
+  "hero": {
+    "label": "HMH trade operations",
+    "slide": "Show slide {n}: {label}",
+    "scroll": "SCROLL"
+  },
+  "gallery": {
+    "show": "Show image: {label}"
   }
 }

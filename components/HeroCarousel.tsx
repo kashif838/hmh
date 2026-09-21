@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { useTranslations } from "next-intl";
 
 type Slide = { src: string; alt: string; label: string };
 
@@ -14,6 +15,7 @@ const subscribe = (cb: () => void) => {
 
 /** Full-bleed crossfading hero backdrop with slow drift and progress-bar controls (PRD §7 motion). */
 export function HeroCarousel({ slides, children }: { slides: Slide[]; children: React.ReactNode }) {
+  const t = useTranslations("hero");
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduce = useSyncExternalStore(subscribe, () => matchMedia(QUERY).matches, () => false);
@@ -26,7 +28,7 @@ export function HeroCarousel({ slides, children }: { slides: Slide[]; children: 
   return (
     <section
       aria-roledescription="carousel"
-      aria-label="HMH trade operations"
+      aria-label={t("label")}
       className="relative h-[100svh] max-h-[860px] min-h-[640px] overflow-hidden bg-ink lg:h-[884px] lg:max-h-none lg:min-h-0"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -57,7 +59,7 @@ export function HeroCarousel({ slides, children }: { slides: Slide[]; children: 
             <span className="hidden text-[13px] font-semibold tracking-[0.04em] text-gold lg:inline" aria-hidden="true">
               0{i + 1} / 0{slides.length}
             </span>
-            <span className="hidden min-w-[252px] text-[12.5px] font-medium tracking-[0.14em] text-paper/85 lg:inline" aria-live="polite">
+            <span className="hidden min-w-[252px] text-[12.5px] font-medium tracking-[0.14em] text-paper/85 lg:inline rtl:tracking-normal" aria-live="polite">
               {slides[i].label}
             </span>
             <span className="flex gap-[7px]">
@@ -66,7 +68,7 @@ export function HeroCarousel({ slides, children }: { slides: Slide[]; children: 
                   key={s.src}
                   type="button"
                   onClick={() => setI(n)}
-                  aria-label={`Show slide ${n + 1}: ${s.label}`}
+                  aria-label={t("slide", { n: n + 1, label: s.label })}
                   aria-current={n === i}
                   className="relative h-[22px] w-12 cursor-pointer"
                 >
@@ -76,8 +78,8 @@ export function HeroCarousel({ slides, children }: { slides: Slide[]; children: 
               ))}
             </span>
           </div>
-          <div className="hidden items-center gap-[11px] text-[11px] font-medium tracking-[0.14em] text-paper/50 lg:flex" aria-hidden="true">
-            <span>SCROLL</span>
+          <div className="hidden items-center gap-[11px] text-[11px] font-medium tracking-[0.14em] text-paper/50 lg:flex rtl:tracking-normal" aria-hidden="true">
+            <span>{t("scroll")}</span>
             <svg width="11" height="26" viewBox="0 0 11 26" fill="none"><path d="M5.5 0v22M1 17.6l4.5 4.6 4.5-4.6" stroke="currentColor" strokeWidth="1.1" /></svg>
           </div>
         </div>

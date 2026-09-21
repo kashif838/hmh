@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Img = { src: string; alt: string; label: string };
 
 export function ProductGallery({ images, brand, name }: { images: Img[]; brand: string; name: string }) {
+  const t = useTranslations("gallery");
   const [i, setI] = useState(0);
 
   if (images.length === 0) {
@@ -44,7 +46,7 @@ export function ProductGallery({ images, brand, name }: { images: Img[]; brand: 
               key={img.src}
               type="button"
               onClick={() => setI(n)}
-              aria-label={`Show image: ${img.label}`}
+              aria-label={t("show", { label: img.label })}
               aria-pressed={n === i}
               className={`relative h-[84px] w-[84px] shrink-0 cursor-pointer border bg-off-white p-[10px] transition-colors lg:h-[104px] lg:w-[104px] ${n === i ? "border-ink-3" : "border-transparent hover:border-ink-3/25"}`}
             >

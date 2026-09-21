@@ -198,6 +198,8 @@
   .tile:hover .rule, .tile:focus-visible .rule { transform: scaleX(1); }
   .tile .arw { opacity: 0; transform: translateX(-6px); transition: opacity 0.4s ease, transform 0.45s var(--ease-out-expo); }
   .tile:hover .arw { opacity: 1; transform: none; }
+  [dir="rtl"] .tile .arw { transform: translateX(6px); }
+  [dir="rtl"] .tile:hover .arw { transform: none; }
 
   .cap { transition: background 0.32s ease; }
   .cap:hover { background: #fafaf8; }
@@ -292,3 +294,6 @@ html:not(.js) [data-reveal], html:not(.js) [data-rise] { opacity: 1; transform: 
 ::-webkit-scrollbar-track { background: var(--color-ink); }
 ::-webkit-scrollbar-thumb { background: #33342f; border: 3px solid var(--color-ink); }
 ::-webkit-scrollbar-thumb:hover { background: #5a5a50; }
+
+/* Tracking breaks the joins between Arabic letters. Unlayered so it beats tracking utilities. */
+html[lang="ar"] body * { letter-spacing: 0; }

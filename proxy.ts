@@ -7,11 +7,12 @@ const intl = createMiddleware(routing);
 
 export default function proxy(request: NextRequest) {
   if (HOME_ONLY) {
-    // Strip the locale prefix, then send any non-home page to its homepage section.
-    const path = request.nextUrl.pathname.replace(/^\/ar(?=\/|$)/, "") || "/";
+    // Strip the locale prefix, then send any hidden page to its homepage section in the same language.
+    const prefix = /^\/ar(?=\/|$)/.test(request.nextUrl.pathname) ? "/ar" : "";
+    const path = request.nextUrl.pathname.slice(prefix.length) || "/";
     const target = previewHref(path);
     if (target !== path && path.replace(/\/$/, "") !== "") {
-      return NextResponse.redirect(new URL(target, request.url), 307);
+      return NextResponse.redirect(new URL(prefix + target, request.url), 307);
     }
   }
   return intl(request);

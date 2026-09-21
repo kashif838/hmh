@@ -36,7 +36,9 @@ function Submit() {
 export function EnquiryForm({ kind, product, category }: { kind: EnquiryKind; product?: string; category?: string }) {
   const t = useTranslations("form");
   const [state, action] = useActionState<EnquiryState, FormData>(submitEnquiry, { status: "idle" });
-  const e = state.errors ?? {};
+  // The action returns English messages; show them in the page's language.
+  const ERR: Record<string, string> = { Required: t("errRequired"), "Enter a valid email address": t("errEmail"), "Tell us how we can help": t("errMessage") };
+  const e = Object.fromEntries(Object.entries(state.errors ?? {}).map(([k, m]) => [k, ERR[m] ?? m]));
   const v = state.values ?? {};
   const inv = (n: string) => (e[n] ? { "aria-invalid": true as const, "aria-describedby": `${n}-err` } : {});
 
@@ -47,7 +49,7 @@ export function EnquiryForm({ kind, product, category }: { kind: EnquiryKind; pr
   if (state.status === "ok") {
     return (
       <div role="status" className="border border-ink-3/14 p-8 lg:p-[42px]">
-        <p className="t-label m-0 text-gold-deep">Enquiry sent</p>
+        <p className="t-label m-0 text-gold-deep">{t("sent")}</p>
         <p className="mt-4 text-[17px] font-normal leading-[1.6] tracking-[-0.014em]">{t("success")}</p>
       </div>
     );
@@ -58,20 +60,20 @@ export function EnquiryForm({ kind, product, category }: { kind: EnquiryKind; pr
       <input type="hidden" name="kind" value={kind} />
       {/* Honeypot, hidden from people and assistive tech */}
       <div aria-hidden="true" className="absolute -start-[9999px] h-px w-px overflow-hidden">
-        <label>Website <input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
+        <label>{t("honeypot")} <input type="text" name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
 
       {kind === "quote" && (
         <>
           {product
             ? <Field name="product" label={t("product")} span2><input id="product" name="product" defaultValue={v.product ?? product} readOnly /></Field>
-            : <Field name="category" label={t("category")} span2><input id="category" name="category" defaultValue={v.category ?? category} placeholder="e.g. Dairy Products" /></Field>}
-          <Field name="quantity" label={t("quantity")}><input id="quantity" name="quantity" defaultValue={v.quantity} inputMode="numeric" placeholder="e.g. 1,200" /></Field>
+            : <Field name="category" label={t("category")} span2><input id="category" name="category" defaultValue={v.category ?? category} placeholder={t("phCategory")} /></Field>}
+          <Field name="quantity" label={t("quantity")}><input id="quantity" name="quantity" defaultValue={v.quantity} inputMode="numeric" placeholder={t("phQuantity")} /></Field>
           <Field name="unit" label={t("unit")}>
             <select id="unit" name="unit" defaultValue={v.unit}>{(t.raw("units") as string[]).map((u, i) => <option key={u} value={["Cartons", "Pallets", "20ft container", "40ft container"][i]}>{u}</option>)}</select>
           </Field>
-          <Field name="country" label={t("country")} error={e.country}><input id="country" name="country" defaultValue={v.country} required placeholder="e.g. Kenya" autoComplete="country-name" {...inv("country")} /></Field>
-          <Field name="port" label={t("port")}><input id="port" name="port" defaultValue={v.port} placeholder="e.g. Mombasa" /></Field>
+          <Field name="country" label={t("country")} error={e.country}><input id="country" name="country" defaultValue={v.country} required placeholder={t("phCountry")} autoComplete="country-name" {...inv("country")} /></Field>
+          <Field name="port" label={t("port")}><input id="port" name="port" defaultValue={v.port} placeholder={t("phPort")} /></Field>
           <Field name="incoterm" label={t("incoterm")}>
             <select id="incoterm" name="incoterm" defaultValue={v.incoterm}>
               <option value="Not sure yet">{t("incotermUnsure")}</option>
@@ -96,7 +98,7 @@ export function EnquiryForm({ kind, product, category }: { kind: EnquiryKind; pr
       <Field name="email" label={t("email")} error={e.email}><input id="email" name="email" type="email" defaultValue={v.email} required autoComplete="email" {...inv("email")} /></Field>
       <Field name="phone" label={`${t("phone")} ${t("optional")}`}><input id="phone" name="phone" type="tel" defaultValue={v.phone} autoComplete="tel" dir="ltr" /></Field>
       <Field name="message" label={kind === "contact" ? t("message") : `${t("message")} ${t("optional")}`} error={e.message} span2>
-        <textarea id="message" name="message" defaultValue={v.message} required={kind === "contact"} placeholder={kind === "quote" ? "Pack configuration, delivery window, anything else we should know" : ""} {...inv("message")} />
+        <textarea id="message" name="message" defaultValue={v.message} required={kind === "contact"} placeholder={kind === "quote" ? t("phMessage") : ""} {...inv("message")} />
       </Field>
 
       {kind === "quote" && (

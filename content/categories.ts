@@ -62,6 +62,7 @@ export const categories = z.array(CategorySchema).parse([
     slug: "mineral-water", name: "Mineral Water", group: "food", span: 4,
     items: ["Consumer packs", "Bulk"],
     intro: "Mineral water for wholesale and retail distribution.",
+    image: { src: "/images/cat-mineral-water.jpg", alt: "Water poured from a bottle into a glass" },
   },
   {
     slug: "cosmetics-personal-care", name: "Cosmetics & Personal Care", group: "non-food", span: 4,

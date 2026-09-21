@@ -1,4 +1,5 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { translate } from "@/lib/copy";
 import { Link } from "@/i18n/navigation";
 import { company } from "@/content/company";
 import { Lockup } from "./Header";
@@ -8,26 +9,27 @@ type Row = [href: string, label: string, match?: string[]];
 
 export async function Footer() {
   const t = await getTranslations();
+  const tr = translate(await getLocale());
   const cols = [
-    { title: t("footer.company"), links: [["/about", "About HMH"], ["/markets", "Markets We Serve"], ["/contact", t("nav.contact")]] as Row[] },
+    { title: t("footer.company"), links: [["/about", tr("About HMH")], ["/markets", tr("Markets We Serve")], ["/contact", t("nav.contact")]] as Row[] },
     {
       title: t("footer.services"),
       links: [
-        ["/services/import-export", "Import & Export"],
-        ["/services/import-export", "Cross Trading"],
-        ["/services/distribution", "Wholesale & Distribution"],
-        ["/services/private-label", "Private Label"],
-        ["/services", "Global Sourcing"],
+        ["/services/import-export", tr("Import & Export")],
+        ["/services/import-export", tr("Cross Trading")],
+        ["/services/distribution", tr("Wholesale & Distribution")],
+        ["/services/private-label", tr("Private Label")],
+        ["/services", tr("Global Sourcing")],
       ] as Row[],
     },
     {
       title: t("footer.products"),
       links: [
-        ["/products/dairy", "Dairy & Beverages", ["/products/dairy", "/products/beverages", "/products/mineral-water"]],
-        ["/products/grains-commodities", "Grains & Commodities", ["/products/grains-commodities", "/products/agricultural-produce"]],
-        ["/products/oils-fats", "Oils, Honey & Spices", ["/products/oils-fats", "/products/honey", "/products/spices"]],
-        ["/products/canned-foods", "Canned & Confectionery", ["/products/canned-foods", "/products/biscuits-confectionery"]],
-        ["/products#non-food", "Non-Food", ["/products/cosmetics-personal-care", "/products/chemicals", "/products/industrial-products"]],
+        ["/products/dairy", tr("Dairy & Beverages"), ["/products/dairy", "/products/beverages", "/products/mineral-water"]],
+        ["/products/grains-commodities", tr("Grains & Commodities"), ["/products/grains-commodities", "/products/agricultural-produce"]],
+        ["/products/oils-fats", tr("Oils, Honey & Spices"), ["/products/oils-fats", "/products/honey", "/products/spices"]],
+        ["/products/canned-foods", tr("Canned & Confectionery"), ["/products/canned-foods", "/products/biscuits-confectionery"]],
+        ["/products#non-food", tr("Non-Food"), ["/products/cosmetics-personal-care", "/products/chemicals", "/products/industrial-products"]],
       ] as Row[],
     },
   ];
@@ -39,7 +41,7 @@ export async function Footer() {
           <div className="lg:w-[330px] lg:shrink-0">
             <Lockup size={27} />
             <p className="mt-[22px] max-w-[288px] text-[13px] font-light leading-[1.74] text-paper/60">
-              Import, export, cross-trading, wholesale distribution and private label, food and non-food, from Dubai.
+              {tr("Import, export, cross-trading, wholesale distribution and private label, food and non-food, from Dubai.")}
             </p>
           </div>
           <div className="grid flex-1 grid-cols-2 gap-10 md:grid-cols-4 md:gap-14">
@@ -56,10 +58,10 @@ export async function Footer() {
             <div>
               <h2 className="t-label mb-[18px] text-gold">{t("footer.brands")}</h2>
               <ul className="flex flex-col gap-[11px] text-[13px] font-light">
-                <li><FooterLink href="/brands/boon" match={["/brands/boon", "/products/beverages/boon-"]} className="text-paper/75">Boon</FooterLink></li>
-                <li><FooterLink href="/brands/abu-koora" match={["/brands/abu-koora", "/products/biscuits-confectionery/abu-koora-"]} className="text-paper/75">Abu Koora</FooterLink></li>
-                <li><FooterLink href="/brands" className="text-paper/75">Bonfood</FooterLink></li>
-                <li><FooterLink href="/brands" className="text-paper/75">Baba Cook</FooterLink></li>
+                <li><FooterLink href="/brands/boon" match={["/brands/boon", "/products/beverages/boon-"]} className="text-paper/75">{tr("Boon")}</FooterLink></li>
+                <li><FooterLink href="/brands/abu-koora" match={["/brands/abu-koora", "/products/biscuits-confectionery/abu-koora-"]} className="text-paper/75">{tr("Abu Koora")}</FooterLink></li>
+                <li><FooterLink href="/brands" className="text-paper/75">{tr("Bonfood")}</FooterLink></li>
+                <li><FooterLink href="/brands" className="text-paper/75">{tr("Baba Cook")}</FooterLink></li>
               </ul>
               <h2 className="t-label mb-[15px] mt-7 text-gold">{t("footer.contact")}</h2>
               <p className="text-[13px] font-light leading-[1.72]">
@@ -72,7 +74,7 @@ export async function Footer() {
         <div className="h-px bg-paper/12" />
         <div className="flex flex-col gap-4 py-6 text-[12.5px] font-light text-paper/45 md:flex-row md:items-center md:justify-between">
           <span>
-            &copy; {new Date().getFullYear()} {company.legalName} &middot; {company.city}, {company.country}
+            &copy; {new Date().getFullYear()} {tr(company.legalName)} &middot; {tr(`${company.city}, ${company.country}`)}
             <span className="mx-2">|</span>
             {t("footer.poweredBy")}{" "}
             <a href={company.saabify} target="_blank" rel="noopener" className="font-medium text-gold hover:text-gold-light">Saabify</a>

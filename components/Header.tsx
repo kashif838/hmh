@@ -17,11 +17,12 @@ const NAV = [
 ] as const;
 
 export function Lockup({ size = 25 }: { size?: number }) {
+  const t = useTranslations("header");
   return (
     <span className="flex items-center gap-[13px]">
       <Image src="/images/hmh-mark.png" alt="HMH" width={600} height={300} priority className="w-auto" style={{ height: Math.round(size * 1.45) }} />
       <span className="h-[26px] w-px bg-gold/60" />
-      <span className="text-[11px] font-medium tracking-[0.14em] text-paper/60">GENERAL TRADING</span>
+      <span className="text-[11px] font-medium tracking-[0.14em] text-paper/60 rtl:text-[13px] rtl:tracking-normal">{t("lockup")}</span>
     </span>
   );
 }
@@ -46,6 +47,7 @@ function Col({ title, links, href }: { title: string; links: MenuLink[]; href?: 
 }
 
 function LangSwitch() {
+  const t = useTranslations("header");
   const locale = useLocale();
   const pathname = usePathname();
   const other = locale === "en" ? "ar" : "en";
@@ -56,7 +58,7 @@ function LangSwitch() {
       {AR_LIVE ? (
         <Link href={pathname} locale={other} className="hover:text-[#f4f1ea]" hrefLang={other}>AR</Link>
       ) : (
-        <span aria-disabled="true" title="Arabic coming soon">AR</span>
+        <span aria-disabled="true" title={t("arSoon")}>AR</span>
       )}
     </div>
   );
@@ -98,15 +100,15 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
   return (
     <header className={overlay ? "absolute inset-x-0 top-0 z-40" : "relative z-40 bg-ink"}>
       <div className="wrap flex h-[76px] items-center gap-11 lg:h-[92px]">
-        <Link href="/" aria-label="HMH General Trading, home" className="shrink-0">
+        <Link href="/" aria-label={t("header.home")} className="shrink-0">
           <Lockup />
         </Link>
-        <nav aria-label="Primary" className="ms-5 hidden items-center gap-8 lg:flex">
+        <nav aria-label={t("header.primary")} className="ms-5 hidden items-center gap-8 lg:flex">
           {NAV.map((n) =>
             n.key === "products" ? (
               <div key={n.href} className="flex items-center gap-1" onMouseEnter={openDrop} onMouseLeave={closeDropSoon}>
                 <Link href={n.href} className="navlink" aria-current={active(n.href) ? "page" : undefined}>{t(`nav.${n.key}`)}</Link>
-                <button type="button" aria-label="Show all products" aria-expanded={drop} aria-controls="products-menu"
+                <button type="button" aria-label={t("header.showProducts")} aria-expanded={drop} aria-controls="products-menu"
                   onClick={() => (drop ? setDropAt(null) : openDrop())}
                   className="flex h-7 w-5 items-center justify-center text-paper/70 hover:text-paper-bright">
                   <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true" className={`transition-transform duration-300 ${drop ? "rotate-180" : ""}`}>
@@ -145,14 +147,14 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
       <div id="products-menu" hidden={!drop} onMouseEnter={openDrop} onMouseLeave={closeDropSoon}
         className="absolute inset-x-0 top-full z-40 border-y border-paper/10 bg-ink shadow-[0_24px_48px_-12px_rgba(0,0,0,.45)] max-lg:!hidden">
         <div className="wrap grid grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-10 py-10">
-          <Col title="Food" links={menu.food} />
-          <Col title="Non-food" links={menu.nonFood} />
-          <Col title="Abu Koora" links={menu.abuKoora} href="/brands/abu-koora" />
-          <Col title="Boon" links={menu.boon} href="/brands/boon" />
+          <Col title={t("header.food")} links={menu.food} />
+          <Col title={t("header.nonFood")} links={menu.nonFood} />
+          <Col title={t("header.abuKoora")} links={menu.abuKoora} href="/brands/abu-koora" />
+          <Col title={t("header.boon")} links={menu.boon} href="/brands/boon" />
         </div>
         <div className="wrap flex items-center justify-between border-t border-paper/10 py-5">
-          <span className="text-[12.5px] font-light text-paper/55">Prices are quoted per order, never listed.</span>
-          <Link href="/products" className="text-[13px] font-semibold text-gold hover:text-gold-light">All products &rarr;</Link>
+          <span className="text-[12.5px] font-light text-paper/55">{t("header.prices")}</span>
+          <Link href="/products" className="text-[13px] font-semibold text-gold hover:text-gold-light">{t("header.allProducts")} <span aria-hidden="true" className="flip-rtl inline-block">&rarr;</span></Link>
         </div>
       </div>
 
@@ -161,7 +163,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
         hidden={!open}
         className="fixed inset-x-0 bottom-0 top-[76px] z-40 overflow-y-auto bg-ink px-5 pb-10 pt-6 lg:hidden"
       >
-        <nav aria-label="Mobile" className="flex flex-col">
+        <nav aria-label={t("header.mobile")} className="flex flex-col">
           {NAV.map((n) =>
             n.key === "products" ? (
               <details key={n.href} className="group border-b border-paper/12">
@@ -172,13 +174,13 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
                   </svg>
                 </summary>
                 <div className="grid grid-cols-2 gap-x-6 gap-y-8 pb-7">
-                  <Col title="Food" links={menu.food} />
+                  <Col title={t("header.food")} links={menu.food} />
                   <div className="flex flex-col gap-8">
-                    <Col title="Non-food" links={menu.nonFood} />
-                    <Col title="Abu Koora" links={menu.abuKoora} href="/brands/abu-koora" />
+                    <Col title={t("header.nonFood")} links={menu.nonFood} />
+                    <Col title={t("header.abuKoora")} links={menu.abuKoora} href="/brands/abu-koora" />
                   </div>
-                  <Col title="Boon" links={menu.boon} href="/brands/boon" />
-                  <div className="self-end"><Link href="/products" className="text-[13px] font-semibold text-gold">All products &rarr;</Link></div>
+                  <Col title={t("header.boon")} links={menu.boon} href="/brands/boon" />
+                  <div className="self-end"><Link href="/products" className="text-[13px] font-semibold text-gold">{t("header.allProducts")} <span aria-hidden="true" className="flip-rtl inline-block">&rarr;</span></Link></div>
                 </div>
               </details>
             ) : (
