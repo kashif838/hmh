@@ -8,7 +8,8 @@ export const HOME_ONLY = process.env.NEXT_PUBLIC_HOME_ONLY !== "false";
 /** Pages shown during the preview (exact paths). */
 export const OPEN = [
   "/about", "/products", "/brands", "/brands/boon", "/brands/abu-koora",
-  "/markets", "/contact", "/request-a-quote",
+  "/markets", "/contact", "/request-a-quote", "/privacy-policy", "/terms",
+  "/services", "/services/private-label", "/services/import-export", "/services/distribution",
 ];
 
 const SECTIONS: [path: string, section: string][] = [
