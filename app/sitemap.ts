@@ -5,9 +5,10 @@ import { brands } from "@/content/brands";
 import { servicePages } from "@/content/services";
 import { company } from "@/content/company";
 import { AR_LIVE } from "@/i18n/routing";
+import { HOME_ONLY } from "@/lib/preview";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = [
+  const paths = HOME_ONLY ? ["/"] : [
     "/", "/about", "/services", "/markets", "/products", "/brands",
     "/request-a-quote", "/partner-with-us", "/contact", "/privacy-policy", "/terms",
     ...servicePages.map((s) => `/services/${s.slug}`),
