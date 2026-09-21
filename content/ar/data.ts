@@ -246,6 +246,11 @@ export const data: Record<string, string> = {
   "Bulk and retail distribution into modern trade, traditional trade and wholesale channels.":
     "توزيع بالجملة والتجزئة في قنوات التجارة الحديثة والتجارة التقليدية والبيع بالجملة.",
   "Step 04": "الخطوة 04",
+  "Step 05": "الخطوة 05",
+  "International Marketing": "التسويق الدولي",
+  "Exhibitors and visitors at booths in a trade fair hall": "عارضون وزوار عند الأجنحة في قاعة معرض تجاري",
+  "Taking our brands to international food fairs such as Gulfood, ISM, SIAL and the Saudi Food Show, to meet buyers, distributors and suppliers.":
+    "نشارك بعلاماتنا التجارية في معارض الأغذية الدولية مثل جلفود وISM وسيال ومعرض الغذاء السعودي، للقاء المشترين والموزعين والموردين.",
   "Bottling and packing line inside a food production facility": "خط تعبئة وتغليف داخل منشأة لإنتاج الأغذية",
   "Where sourcing and distribution meet: a product specified, branded, packaged and placed under a name we build.":
     "حيث يلتقي التوريد بالتوزيع: منتج نحدد مواصفاته ونمنحه علامته ونغلّفه ونطرحه تحت اسم نبنيه.",

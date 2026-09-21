@@ -97,11 +97,11 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
 
   return (
     <header className={overlay ? "absolute inset-x-0 top-0 z-40" : "relative z-40 bg-ink"}>
-      <div className="wrap flex h-[76px] items-center gap-11 lg:h-[92px]">
+      <div className="wrap flex h-[76px] items-center gap-11 lg:h-[92px] lg:gap-6 xl:gap-11">
         <Link href="/" aria-label={t("header.home")} className="shrink-0">
           <Lockup />
         </Link>
-        <nav aria-label={t("header.primary")} className="ms-5 hidden items-center gap-8 lg:flex">
+        <nav aria-label={t("header.primary")} className="ms-5 hidden items-center gap-8 whitespace-nowrap lg:ms-0 lg:flex lg:gap-5 xl:ms-5 xl:gap-8">
           {NAV.map((n) =>
             n.key === "products" ? (
               <div key={n.href} className="flex items-center gap-1" onMouseEnter={openDrop} onMouseLeave={closeDropSoon}>
@@ -121,9 +121,9 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
             ),
           )}
         </nav>
-        <div className="ms-auto hidden items-center gap-[22px] lg:flex">
+        <div className="ms-auto hidden items-center gap-[22px] whitespace-nowrap lg:flex lg:gap-4 xl:gap-[22px]">
           <LangSwitch />
-          <Link href="/request-a-quote" aria-current={active("/request-a-quote") ? "page" : undefined} className="btn btn-ghost !min-h-0 !px-[22px] !py-[13px] aria-[current=page]:border-gold aria-[current=page]:text-gold-light">{t("cta.quote")}</Link>
+          <Link href="/request-a-quote" aria-current={active("/request-a-quote") ? "page" : undefined} className="btn btn-ghost !min-h-0 !px-[16px] !py-[13px] xl:!px-[22px] aria-[current=page]:border-gold aria-[current=page]:text-gold-light">{t("cta.quote")}</Link>
         </div>
         <button
           ref={menuBtn}

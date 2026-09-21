@@ -33,10 +33,10 @@ export const components: Record<string, string> = {
   "Baba Cook": "بابا كوك",
 
   // Sections: flow
-  "Four capabilities, one continuous": "أربع قدرات في",
+  "Five capabilities, one continuous": "خمس قدرات في",
   "chain of custody": "سلسلة عهدة واحدة متصلة",
-  "Most companies do one part of this. Because we do all four, a shipment does not change hands, or change owner of the problem, between origin and shelf.":
-    "تتولى معظم الشركات جزءاً واحداً من هذه السلسلة. ولأننا نتولى الأجزاء الأربعة كلها، لا تنتقل الشحنة من يد إلى أخرى، ولا تنتقل مسؤولية أي مشكلة إلى طرف آخر، من بلد المنشأ حتى رف المتجر.",
+  "Most companies do one part of this. Because we do all five, a shipment does not change hands, or change owner of the problem, between origin and shelf.":
+    "تتولى معظم الشركات جزءاً واحداً من هذه السلسلة. ولأننا نتولى الأجزاء الخمسة كلها، لا تنتقل الشحنة من يد إلى أخرى، ولا تنتقل مسؤولية أي مشكلة إلى طرف آخر، من بلد المنشأ حتى رف المتجر.",
 
   // Sections: category mosaic
   "Food": "المواد الغذائية",

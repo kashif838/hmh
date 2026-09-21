@@ -10,8 +10,8 @@ export const pages: Record<string, string> = {
     "بون فود وبابا كوك وبون وأبو كورة: علامات تجارية تملكها وتطوّرها إتش إم إتش للتجارة العامة، تُحدَّد مواصفاتها وتُعبّأ بلغتين وتُطرح في الأسواق.",
   ", an HMH brand": "، علامة تجارية من إتش إم إتش",
   "Contact": "تواصل معنا",
-  "Contact HMH General Trading LLC in Dubai: +971 55 771 6733, hmhdubai26@gmail.com.":
-    "تواصل مع إتش إم إتش للتجارة العامة ش.ذ.م.م في دبي: +971 55 771 6733، hmhdubai26@gmail.com.",
+  "Contact HMH General Trading LLC in Dubai: +971 55 771 6732, hmhdubai26@gmail.com.":
+    "تواصل مع إتش إم إتش للتجارة العامة ش.ذ.م.م في دبي: +971 55 771 6732، hmhdubai26@gmail.com.",
   "Markets We Serve": "الأسواق التي نخدمها",
   "HMH trades from Dubai into the GCC, MENA, CIS and Africa, and into the Australian continent.":
     "تتاجر إتش إم إتش من دبي مع دول مجلس التعاون الخليجي والشرق الأوسط وشمال أفريقيا ورابطة الدول المستقلة وأفريقيا، ومع القارة الأسترالية.",

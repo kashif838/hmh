@@ -4,8 +4,8 @@ export const company = {
   shortName: "HMH",
   city: "Dubai",
   country: "United Arab Emirates",
-  phone: "+971 55 771 6733",
-  phoneHref: "tel:+971557716733",
+  phone: "+971 55 771 6732",
+  phoneHref: "tel:+971557716732",
   email: "hmhdubai26@gmail.com",
   url: "https://www.hmhdubai.com",
   vision:

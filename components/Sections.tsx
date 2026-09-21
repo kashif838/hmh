@@ -66,18 +66,18 @@ export function CapabilityGrid() {
 
 export function Flow() {
   const tr = useCopy();
-  const offsets = ["lg:pt-0", "lg:pt-[52px]", "lg:pt-[14px]", "lg:pt-[66px]"];
+  const offsets = ["lg:pt-0", "lg:pt-[52px]", "lg:pt-[14px]", "lg:pt-[66px]", "lg:pt-[28px]"];
   return (
     <section className="section-y bg-white">
       <div className="wrap">
         <SectionHead
-          title={<>{tr("Four capabilities, one continuous")} <Hl>{tr("chain of custody")}</Hl></>}
-          aside={tr("Most companies do one part of this. Because we do all four, a shipment does not change hands, or change owner of the problem, between origin and shelf.")}
+          title={<>{tr("Five capabilities, one continuous")} <Hl>{tr("chain of custody")}</Hl></>}
+          aside={tr("Most companies do one part of this. Because we do all five, a shipment does not change hands, or change owner of the problem, between origin and shelf.")}
         />
         <div data-reveal className="relative mt-[54px] h-px bg-ink-3/14">
           <span className="flowline absolute inset-0 block bg-gradient-to-r from-gold-deep to-gold-deep/15 rtl:bg-gradient-to-l" />
         </div>
-        <ol className="m-0 grid list-none grid-cols-1 gap-10 p-0 sm:grid-cols-2 lg:grid-cols-4 lg:gap-[26px]">
+        <ol className="m-0 grid list-none grid-cols-1 gap-10 p-0 sm:grid-cols-2 lg:grid-cols-5 lg:gap-[22px]">
           {flow.map((f, i) => (
             <li key={f.title} data-reveal className={offsets[i]} style={{ transitionDelay: `${i * 0.08}s` }}>
               <div className="flex items-center gap-3 pb-[22px] pt-6">
@@ -85,7 +85,7 @@ export function Flow() {
                 <span className="t-label text-gold-deep">{tr(f.step)}</span>
               </div>
               <div className="tile relative h-[300px] bg-off-white lg:h-[392px]">
-                <Image src={f.image} alt={tr(f.alt)} fill sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                <Image src={f.image} alt={tr(f.alt)} fill sizes="(min-width:1024px) 20vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
               </div>
               <h3 className="mt-[22px] mb-[9px] text-[22px] tracking-[-0.024em]">{tr(f.title)}</h3>
               <p className="m-0 text-[13.5px] font-light leading-[1.7] text-muted">{tr(f.body)}</p>
@@ -267,7 +267,7 @@ const LOGOS: { name: string; images: { src: string; alt: string; w: number; h: n
     name: "Baba Cook",
     images: [
       { src: "/images/babacook-en.png", alt: "Baba Cook logo, English", w: 900, h: 718 },
-      { src: "/images/babacook-ar.png", alt: "Baba Cook logo, Arabic", w: 759, h: 604 },
+      { src: "/images/babacook-ar.png", alt: "Baba Cook logo, Arabic", w: 900, h: 715 },
     ],
   },
   { name: "Boon", images: [{ src: "/images/boon-logo.png", alt: "Boon logo", w: 488, h: 316 }] },
@@ -279,11 +279,12 @@ export function LogoWall() {
   return (
     <ul className="m-0 grid list-none grid-cols-1 gap-px border border-ink-3/13 bg-ink-3/13 p-0 sm:grid-cols-2 lg:grid-cols-4" aria-label={tr("HMH brands")}>
       {LOGOS.map((l, i) => (
-        <li key={l.name} data-reveal className="flex h-[180px] items-center justify-center gap-6 bg-white px-8 lg:h-[220px]" style={{ transitionDelay: `${i * 0.06}s` }}>
+        <li key={l.name} data-reveal className="flex h-[180px] items-center justify-center gap-4 bg-white px-6 lg:h-[220px] lg:gap-5" style={{ transitionDelay: `${i * 0.06}s` }}>
           {l.images.map((img) => (
             <Image key={img.src} src={img.src} alt={tr(img.alt)} width={img.w} height={img.h}
               sizes="(min-width:640px) 22vw, 60vw"
-              className={`w-auto object-contain ${l.images.length > 1 ? "max-h-[96px] lg:max-h-[118px]" : "max-h-[84px] lg:max-h-[104px]"} max-w-full`} />
+              // Paired logos share the tile width equally, so neither can be pushed out of view.
+              className={`object-contain ${l.images.length > 1 ? "h-auto min-w-0 max-w-[150px] flex-1 max-h-[118px]" : "w-auto max-w-full max-h-[84px] lg:max-h-[104px]"}`} />
           ))}
         </li>
       ))}
