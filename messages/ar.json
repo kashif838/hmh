@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "What We Do",
+    "products": "Products",
+    "brands": "Our Brands",
+    "markets": "Markets",
+    "contact": "Contact",
+    "home": "Home",
+    "menu": "Menu",
+    "close": "Close menu",
+    "skip": "Skip to content"
+  },
+  "cta": {
+    "quote": "Request a Quote",
+    "partner": "Partner With HMH",
+    "distributor": "Become a Distributor",
+    "explore": "Explore What We Trade",
+    "call": "Call",
+    "email": "Email"
+  },
+  "form": {
+    "product": "Product",
+    "category": "Category",
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "units": ["Cartons", "Pallets", "20ft container", "40ft container"],
+    "country": "Destination country",
+    "port": "Destination port",
+    "incoterm": "Incoterm",
+    "incotermUnsure": "Not sure yet",
+    "company": "Company",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "brand": "Brand",
+    "partnership": "Partnership type",
+    "partnerships": ["Distribution", "Agency", "Private label", "Sourcing"],
+    "message": "Message",
+    "optional": "(optional)",
+    "privateLabel": "I'm also interested in this under my own brand (private label).",
+    "send": "Send Enquiry",
+    "sending": "Sending…",
+    "note": "No account, no obligation.",
+    "success": "Thank you. Your enquiry has reached our team and we will reply by email.",
+    "error": "Your enquiry could not be sent. Please email business@hmhdubai.com directly.",
+    "invalid": "Please check the highlighted fields."
+  },
+  "footer": {
+    "company": "Company",
+    "services": "What We Do",
+    "products": "Products",
+    "brands": "Our Brands",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "top": "Back to top",
+    "poweredBy": "Powered by"
+  }
+}

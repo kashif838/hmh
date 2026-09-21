@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HMH General Trading — website
 
-## Getting Started
+B2B site for HMH General Trading LLC, Dubai. Next.js 16 (App Router, TypeScript), Tailwind CSS 4, next-intl. Every page is statically generated; there is no e-commerce.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copy `.env.example` to `.env.local` and fill in:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Needed | Purpose |
+| --- | --- | --- |
+| `RESEND_API_KEY` | **Production** | Delivers enquiries by email. Without it, forms show the visitor an error in production rather than dropping the lead. In development submissions are logged to the console. |
+| `ENQUIRY_TO` / `ENQUIRY_FROM` | Optional | Recipient (defaults to business@hmhdubai.com) and sender. The sender domain must be verified in Resend. |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Optional | Cloudflare Turnstile on forms. A honeypot always runs. |
+| `NEXT_PUBLIC_GA_ID` | Optional | GA4. Tracks `rfq_submit`, `partner_submit`, `contact_submit`, `tel_click`, `mailto_click`. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where things live
 
-## Learn More
+```
+content/        all site content, typed and Zod-validated at build time
+  company.ts      facts, contact, vision and mission (from HMH's introduction letter)
+  categories.ts   13 categories, homepage mosaic order and spans
+  products.ts     Abu Koora + the 10 Boon varieties
+  brands.ts       Boon, Abu Koora
+  services.ts     capabilities, trade flow, private-label steps, service pages
+  map-dots.ts     generated world dot matrix for the markets map
+app/[locale]/   routes (English at /, Arabic at /ar/)
+components/     Header, Footer, Sections (shared homepage blocks), ProductGallery, EnquiryForm, …
+app/actions/    enquiry server action (validation, spam checks, email)
+messages/       UI strings (en.json; ar.json mirrors English until Arabic content lands)
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Add a product
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Add one record to `content/products.ts` and its images to `public/images/`. The route, metadata, sitemap entry, brand-page listing and related links are all generated from it. Fields left out are simply not rendered.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Turn on Arabic
 
-## Deploy on Vercel
+Translate `messages/ar.json` and the content files, then set `AR_LIVE = true` in `i18n/routing.ts`. That enables the header switch, hreflang pairs and indexing of `/ar/`. The layout is already right-to-left safe (logical CSS properties throughout); check pages with `/ar/` before launch.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The design is locked. Tokens (colour, type scale, motion) are in `app/globals.css`. Poppins only, no italics, white light sections, gold on near-black.
