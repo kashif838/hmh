@@ -4,6 +4,9 @@ export const routing = defineRouting({
   locales: ["en", "ar"],
   defaultLocale: "en",
   localePrefix: "as-needed",
+  // The URL alone decides the language: unprefixed is English, /ar is Arabic.
+  // Detection would send English links back to /ar once a visitor had seen Arabic.
+  localeDetection: false,
 });
 
 export type Locale = (typeof routing.locales)[number];

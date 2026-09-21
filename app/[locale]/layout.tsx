@@ -57,7 +57,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang={locale} dir={dirOf(locale)} className={`${poppins.variable} ${plexArabic.variable}`}>
+    <html lang={locale} dir={dirOf(locale)} data-scroll-behavior="smooth" className={`${poppins.variable} ${plexArabic.variable}`}>
       <head>
         {/* Reveal styles only hide content once JS is known to be running. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

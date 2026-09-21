@@ -50,16 +50,14 @@ function LangSwitch() {
   const t = useTranslations("header");
   const locale = useLocale();
   const pathname = usePathname();
-  const other = locale === "en" ? "ar" : "en";
   return (
     <div className="flex items-center gap-[9px] text-[12.5px] text-paper/50">
-      <span className={locale === "en" ? "text-[#f4f1ea]" : ""}>EN</span>
+      {locale === "en" ? <span className="text-[#f4f1ea]">EN</span>
+        : <Link href={pathname} locale="en" className="hover:text-[#f4f1ea]" hrefLang="en">EN</Link>}
       <span className="h-[11px] w-px bg-paper/25" />
-      {AR_LIVE ? (
-        <Link href={pathname} locale={other} className="hover:text-[#f4f1ea]" hrefLang={other}>AR</Link>
-      ) : (
-        <span aria-disabled="true" title={t("arSoon")}>AR</span>
-      )}
+      {locale === "ar" ? <span className="text-[#f4f1ea]">AR</span>
+        : AR_LIVE ? <Link href={pathname} locale="ar" className="hover:text-[#f4f1ea]" hrefLang="ar">AR</Link>
+        : <span aria-disabled="true" title={t("arSoon")}>AR</span>}
     </div>
   );
 }
