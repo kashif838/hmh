@@ -34,8 +34,8 @@ export const flow = [
     body: "Where sourcing and distribution meet: a product specified, branded, packaged and placed under a name we build.",
   },
   {
-    step: "Step 05", title: "International Marketing", image: "/images/flow-fair.jpg",
-    alt: "Exhibitors and visitors at booths in a trade fair hall",
+    step: "Step 05", title: "International Marketing", image: "/images/flow-expo-hall.jpg",
+    alt: "Visitors walking through an exhibition centre hall",
     body: "Taking our brands to international food fairs such as Gulfood, ISM, SIAL and the Saudi Food Show, to meet buyers, distributors and suppliers.",
   },
 ];

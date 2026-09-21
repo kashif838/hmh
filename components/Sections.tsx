@@ -85,7 +85,7 @@ export function Flow() {
                 <span className="t-label text-gold-deep">{tr(f.step)}</span>
               </div>
               <div className="tile relative h-[300px] bg-off-white lg:h-[392px]">
-                <Image src={f.image} alt={tr(f.alt)} fill sizes="(min-width:1024px) 20vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+                <Image src={f.image} alt={tr(f.alt)} fill sizes="(min-width:1024px) 320px, (min-width:640px) 50vw, 100vw" className="object-cover" />
               </div>
               <h3 className="mt-[22px] mb-[9px] text-[22px] tracking-[-0.024em]">{tr(f.title)}</h3>
               <p className="m-0 text-[13.5px] font-light leading-[1.7] text-muted">{tr(f.body)}</p>
