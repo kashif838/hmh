@@ -7,7 +7,6 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { AR_LIVE } from "@/i18n/routing";
 import type { Menu, MenuLink } from "@/lib/menu";
 import { isActive } from "@/lib/nav";
-import { HOME_ONLY } from "@/lib/preview";
 
 const NAV = [
   { href: "/about", key: "about" },
@@ -104,7 +103,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
         </Link>
         <nav aria-label="Primary" className="ms-5 hidden items-center gap-8 lg:flex">
           {NAV.map((n) =>
-            n.key === "products" && !HOME_ONLY ? (
+            n.key === "products" ? (
               <div key={n.href} className="flex items-center gap-1" onMouseEnter={openDrop} onMouseLeave={closeDropSoon}>
                 <Link href={n.href} className="navlink" aria-current={active(n.href) ? "page" : undefined}>{t(`nav.${n.key}`)}</Link>
                 <button type="button" aria-label="Show all products" aria-expanded={drop} aria-controls="products-menu"
@@ -143,7 +142,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
         <div className="wrap"><div className="flip-rtl h-px bg-gradient-to-r from-paper/20 to-paper/5" /></div>
       )}
 
-      {!HOME_ONLY && <div id="products-menu" hidden={!drop} onMouseEnter={openDrop} onMouseLeave={closeDropSoon}
+      <div id="products-menu" hidden={!drop} onMouseEnter={openDrop} onMouseLeave={closeDropSoon}
         className="absolute inset-x-0 top-full z-40 border-y border-paper/10 bg-ink shadow-[0_24px_48px_-12px_rgba(0,0,0,.45)] max-lg:!hidden">
         <div className="wrap grid grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-10 py-10">
           <Col title="Food" links={menu.food} />
@@ -155,7 +154,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
           <span className="text-[12.5px] font-light text-paper/55">Prices are quoted per order, never listed.</span>
           <Link href="/products" className="text-[13px] font-semibold text-gold hover:text-gold-light">All products &rarr;</Link>
         </div>
-      </div>}
+      </div>
 
       <div
         id="mobile-menu"
@@ -164,7 +163,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
       >
         <nav aria-label="Mobile" className="flex flex-col">
           {NAV.map((n) =>
-            n.key === "products" && !HOME_ONLY ? (
+            n.key === "products" ? (
               <details key={n.href} className="group border-b border-paper/12">
                 <summary className={`flex cursor-pointer list-none items-center justify-between py-5 text-[26px] font-semibold tracking-[-0.03em] [&::-webkit-details-marker]:hidden ${active(n.href) ? "text-gold" : "text-paper-bright"}`}>
                   {t(`nav.${n.key}`)}
