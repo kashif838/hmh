@@ -6,7 +6,7 @@ import { HeroCarousel } from "@/components/HeroCarousel";
 import { Arrow } from "@/components/Icons";
 import {
   AbuKooraPanel, BoonPanel, CapabilityGrid, CategoryMosaic, ContactBand, Flow, Hl,
-  MarketsBlock, PrivateLabelSection, Quote, Reasons, SectionHead,
+  LogoWall, MarketsBlock, PrivateLabelSection, Quote, Reasons, SectionHead,
 } from "@/components/Sections";
 import { company } from "@/content/company";
 import { pageMeta } from "@/lib/seo";
@@ -100,8 +100,9 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
         <div className="wrap mb-14">
           <SectionHead
             title={<>We don&rsquo;t only move brands. We <Hl>build them</Hl></>}
-            aside="Two brands owned and developed by HMH: specified, manufactured under contract, packaged bilingually and placed in market."
+            aside="Brands owned and developed by HMH: specified, packaged bilingually and placed in market."
           />
+          <div className="mt-12"><LogoWall /></div>
         </div>
         <BoonPanel />
         <AbuKooraPanel />

@@ -15,7 +15,7 @@ Copy `.env.example` to `.env.local` and fill in:
 | Variable | Needed | Purpose |
 | --- | --- | --- |
 | `RESEND_API_KEY` | **Production** | Delivers enquiries by email. Without it, forms show the visitor an error in production rather than dropping the lead. In development submissions are logged to the console. |
-| `ENQUIRY_TO` / `ENQUIRY_FROM` | Optional | Recipient (defaults to business@hmhdubai.com) and sender. The sender domain must be verified in Resend. |
+| `ENQUIRY_TO` / `ENQUIRY_FROM` | Optional | Recipient (defaults to hmhdubai26@gmail.com) and sender. The sender domain must be verified in Resend. |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Optional | Cloudflare Turnstile on forms. A honeypot always runs. |
 | `NEXT_PUBLIC_GA_ID` | Optional | GA4. Tracks `rfq_submit`, `partner_submit`, `contact_submit`, `tel_click`, `mailto_click`. |
 

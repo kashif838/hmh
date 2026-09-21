@@ -73,7 +73,7 @@ export const servicePages: ServicePage[] = [
     image: { src: "/images/pl-crane.jpg", alt: "Ship-to-shore cranes above stacked containers" },
     sections: [
       { title: "Bilingual packaging", body: "English and Arabic artwork, ingredient declarations, E-numbers, allergen statements and retail barcodes. Both HMH brands are built this way." },
-      { title: "Contract manufacturing", body: "Production placed with a qualified manufacturer and made for HMH, as Abu Koora is made in India for HMH in Dubai." },
+      { title: "Contract manufacturing", body: "Production placed with a qualified manufacturer and made to HMH's specification." },
       { title: "Your brand or ours", body: "Develop a product under your own name, or carry an HMH brand such as Boon or Abu Koora into your market." },
     ],
   },

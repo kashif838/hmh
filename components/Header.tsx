@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -19,7 +20,7 @@ const NAV = [
 export function Lockup({ size = 25 }: { size?: number }) {
   return (
     <span className="flex items-center gap-[13px]">
-      <span className="font-bold leading-none tracking-[0.2em] text-[#f4f1ea]" style={{ fontSize: size }}>HMH</span>
+      <Image src="/images/hmh-mark.png" alt="HMH" width={600} height={300} priority className="w-auto" style={{ height: Math.round(size * 1.45) }} />
       <span className="h-[26px] w-px bg-gold/60" />
       <span className="text-[11px] font-medium tracking-[0.14em] text-paper/60">GENERAL TRADING</span>
     </span>

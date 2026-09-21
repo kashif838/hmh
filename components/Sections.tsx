@@ -248,6 +248,36 @@ export function MarketsBlock({ withBand = true, titleAs: Title = "h2" }: { withB
   );
 }
 
+/* ── Brand logo wall ─────────────────────────────────────────── */
+
+const LOGOS: { name: string; images: { src: string; alt: string; w: number; h: number }[] }[] = [
+  { name: "Bonfood", images: [{ src: "/images/bonfood.png", alt: "Bonfood logo", w: 900, h: 305 }] },
+  {
+    name: "Baba Cook",
+    images: [
+      { src: "/images/babacook-en.png", alt: "Baba Cook logo, English", w: 900, h: 718 },
+      { src: "/images/babacook-ar.png", alt: "Baba Cook logo, Arabic", w: 759, h: 604 },
+    ],
+  },
+  { name: "Abu Koora", images: [{ src: "/images/abukoora-logo.png", alt: "Abu Koora logo", w: 560, h: 243 }] },
+];
+
+export function LogoWall() {
+  return (
+    <ul className="m-0 grid list-none grid-cols-1 gap-px border border-ink-3/13 bg-ink-3/13 p-0 sm:grid-cols-3" aria-label="HMH brands">
+      {LOGOS.map((l, i) => (
+        <li key={l.name} data-reveal className="flex h-[180px] items-center justify-center gap-6 bg-white px-8 lg:h-[220px]" style={{ transitionDelay: `${i * 0.06}s` }}>
+          {l.images.map((img) => (
+            <Image key={img.src} src={img.src} alt={img.alt} width={img.w} height={img.h}
+              sizes="(min-width:640px) 22vw, 60vw"
+              className={`w-auto object-contain ${l.images.length > 1 ? "max-h-[96px] lg:max-h-[118px]" : "max-h-[84px] lg:max-h-[104px]"} max-w-full`} />
+          ))}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /* ── Own brands ──────────────────────────────────────────────── */
 
 export function BoonPanel() {
@@ -314,9 +344,9 @@ export function AbuKooraPanel() {
           <p className="mt-3 text-[18px] tracking-[-0.02em] text-gold-deep">{ak.tagline}</p>
           <p className="t-label mt-4 text-muted">HMH own brand &middot; Private label</p>
           <p className="mt-6 text-[13.5px] font-light leading-[1.74] text-body">{ak.summary}</p>
-          <dl className="mt-7 grid grid-cols-[auto_1fr] gap-x-5 gap-y-[11px] text-[12.5px] font-light">
+          {ak.facts.length > 0 && <dl className="mt-7 grid grid-cols-[auto_1fr] gap-x-5 gap-y-[11px] text-[12.5px] font-light">
             {ak.facts.map(([k, v]) => (<Fragment key={k}><dt className="text-[#7a756b]">{k}</dt><dd className="m-0 text-[#2a2b2d]">{v}</dd></Fragment>))}
-          </dl>
+          </dl>}
           <div className="mt-[30px] flex flex-wrap gap-3">
             <Link href="/products/biscuits-confectionery/abu-koora-sandwich-biscuits" className="btn btn-dark">View product</Link>
             <Link href="/services/private-label" className="btn btn-line">How we build a brand</Link>

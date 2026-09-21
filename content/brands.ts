@@ -24,17 +24,12 @@ export const brands = z.array(BrandSchema).parse([
     name: "Abu Koora",
     tagline: "Sandwich biscuits, made for the Gulf.",
     summary:
-      "Conceived by HMH, produced under contract in India and packaged in two languages for Arabic-speaking markets. A complete private-label build: specification, brand, artwork, compliant declarations and barcoding.",
+      "HMH's own sandwich biscuits for Arabic-speaking markets, packed in separate English and Arabic cartons so each market gets a pack that reads natively.",
     story: [
       "Abu Koora is an HMH own brand, and the clearest example of what HMH's private-label service delivers.",
-      "The biscuits are produced by Biking Food Products Pvt Ltd in Hyderabad, India, for HMH General Trading LLC in Dubai, and packed in separate English and Arabic cartons so each market gets a pack that reads natively.",
+      "Each carton is printed in English or Arabic rather than crowding both languages onto one face, so every market gets a pack that reads natively.",
     ],
-    facts: [
-      ["Product", "Sandwich biscuits"],
-      ["Produced by", "Biking Food Products Pvt Ltd, Hyderabad"],
-      ["Produced for", "HMH General Trading LLC, Dubai"],
-      ["Origin", "Product of India"],
-    ],
+    facts: [],
     theme: "light",
   },
 ]);

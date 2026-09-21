@@ -58,6 +58,8 @@ export async function Footer() {
               <ul className="flex flex-col gap-[11px] text-[13px] font-light">
                 <li><FooterLink href="/brands/boon" match={["/brands/boon", "/products/beverages/boon-"]} className="text-paper/75">Boon</FooterLink></li>
                 <li><FooterLink href="/brands/abu-koora" match={["/brands/abu-koora", "/products/biscuits-confectionery/abu-koora-"]} className="text-paper/75">Abu Koora</FooterLink></li>
+                <li><FooterLink href="/brands" className="text-paper/75">Bonfood</FooterLink></li>
+                <li><FooterLink href="/brands" className="text-paper/75">Baba Cook</FooterLink></li>
               </ul>
               <h2 className="t-label mb-[15px] mt-7 text-gold">{t("footer.contact")}</h2>
               <p className="text-[13px] font-light leading-[1.72]">

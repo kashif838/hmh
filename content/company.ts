@@ -6,7 +6,7 @@ export const company = {
   country: "United Arab Emirates",
   phone: "+971 55 771 6733",
   phoneHref: "tel:+971557716733",
-  email: "business@hmhdubai.com",
+  email: "hmhdubai26@gmail.com",
   url: "https://www.hmhdubai.com",
   vision:
     "To emerge as a strong global company with professional evaluation of business requirements and serving the clientele with quality products & services.",

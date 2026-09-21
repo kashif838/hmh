@@ -56,7 +56,7 @@ export const categories = z.array(CategorySchema).parse([
     slug: "canned-foods", name: "Canned Foods", group: "food", span: 4,
     items: ["Canned tuna", "Canned chicken", "Canned beans"],
     intro: "Canned tuna, canned chicken and canned beans.",
-    image: { src: "/images/cat-canned.jpg", alt: "Opened tin of preserved fish" },
+    image: { src: "/images/cat-canned-tins.jpg", alt: "Unlabelled food tins seen from above" },
   },
   {
     slug: "mineral-water", name: "Mineral Water", group: "food", span: 4,

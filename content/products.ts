@@ -9,9 +9,8 @@ const abuKoora = {
   name: "Abu Koora Sandwich Biscuits",
   shortName: "Sandwich Biscuits",
   lead:
-    "Sandwich biscuits flavoured with vanilla, milk and custard, conceived by HMH for Arabic-speaking markets, produced under contract in India and packed in separate English and Arabic cartons.",
+    "Sandwich biscuits flavoured with vanilla, milk and custard: an HMH own brand for Arabic-speaking markets, packed in separate English and Arabic cartons.",
   facts: [
-    ["Country of origin", "India"],
     ["Pack format", "Printed retail carton"],
     ["Label languages", "English · Arabic"],
     ["Brand owner", "HMH General Trading LLC"],
@@ -20,9 +19,6 @@ const abuKoora = {
     ["Product", "Sandwich biscuits"],
     ["Brand", "Abu Koora — HMH own brand"],
     ["Category", "Biscuits & Confectionery"],
-    ["Country of origin", "India"],
-    ["Manufacturer", "Biking Food Products Pvt Ltd, Hyderabad, Telangana"],
-    ["Produced for", "HMH General Trading LLC, Dubai, UAE"],
     ["Pack format", "Printed retail carton"],
     ["Label languages", "English, Arabic"],
     ["Retail barcode", "Printed on pack"],
@@ -33,7 +29,6 @@ const abuKoora = {
   gallery: [
     { src: "/images/abukoora-en.png", alt: "Abu Koora sandwich biscuits carton, English pack", label: "English pack" },
     { src: "/images/abukoora-ar.png", alt: "Abu Koora sandwich biscuits carton, Arabic pack", label: "Arabic pack" },
-    { src: "/images/ak-label.jpg", alt: "Side panel with ingredients, producer and barcode", label: "Label panel" },
     { src: "/images/ak-biscuit.jpg", alt: "Pack artwork detail showing the sandwich biscuits", label: "Artwork detail" },
   ],
   cutout: "/images/abukoora-en.png",
