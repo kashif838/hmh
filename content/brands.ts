@@ -22,7 +22,7 @@ export const brands = z.array(BrandSchema).parse([
   {
     slug: "abu-koora",
     name: "Abu Koora",
-    tagline: "Sandwich biscuits, made for the Gulf.",
+    tagline: "Sandwich biscuits.",
     summary:
       "HMH's own sandwich biscuits for Arabic-speaking markets, packed in separate English and Arabic cartons so each market gets a pack that reads natively.",
     story: [

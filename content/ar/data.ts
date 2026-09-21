@@ -16,7 +16,7 @@ export const data: Record<string, string> = {
   "Range": "التشكيلة",
   "10 varieties": "10 أصناف",
   "Abu Koora": "أبو كورة",
-  "Sandwich biscuits, made for the Gulf.": "بسكويت ساندويتش، صُنع للخليج.",
+  "Sandwich biscuits.": "بسكويت ساندويتش.",
   "HMH's own sandwich biscuits for Arabic-speaking markets, packed in separate English and Arabic cartons so each market gets a pack that reads natively.":
     "بسكويت ساندويتش من علامة إتش إم إتش الخاصة للأسواق الناطقة بالعربية، معبأ في كراتين منفصلة بالإنجليزية والعربية، ليحصل كل سوق على عبوة بلغته.",
   "Abu Koora is an HMH own brand, and the clearest example of what HMH's private-label service delivers.":
