@@ -162,6 +162,24 @@
   [dir="rtl"] .navlink::after { transform-origin: right center; }
   .navlink:hover::after, .navlink[aria-current="page"]::after { transform: scaleX(1); }
 
+  /* Same active treatment for dropdown and footer links: bright text, gold underline. */
+  .navitem { position: relative; display: inline-block; padding-bottom: 3px; transition: color 0.25s ease; }
+  .navitem::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s var(--ease-out-expo);
+  }
+  [dir="rtl"] .navitem::after { transform-origin: right center; }
+  .navitem:hover::after, .navitem[aria-current="page"]::after { transform: scaleX(1); }
+
+
   /* Image tiles */
   .tile { position: relative; display: block; overflow: hidden; }
   .tile img { transition: transform 1.2s var(--ease-out-expo), filter 0.5s ease; }
@@ -225,6 +243,9 @@
   .field [aria-invalid="true"] { border-color: #b3261e; }
   .field .err { font-size: 12.5px; color: #b3261e; }
 }
+
+/* Unlayered so it beats the text-colour utility each link also carries. */
+.navitem:hover, .navitem[aria-current="page"] { color: #f4f1ea; }
 
 /* ── Motion (PRD §7) ──────────────────────────────────────────── */
 [data-reveal] {

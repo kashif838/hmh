@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { AR_LIVE } from "@/i18n/routing";
 import type { Menu, MenuLink } from "@/lib/menu";
+import { isActive } from "@/lib/nav";
 
 const NAV = [
   { href: "/about", key: "about" },
@@ -25,12 +26,18 @@ export function Lockup({ size = 25 }: { size?: number }) {
 }
 
 function Col({ title, links, href }: { title: string; links: MenuLink[]; href?: string }) {
+  const pathname = usePathname();
   return (
     <div>
       <p className="t-label mb-4 text-gold">{href ? <Link href={href} className="hover:text-gold-light">{title}</Link> : title}</p>
       <ul className="m-0 flex list-none flex-col gap-[9px] p-0">
         {links.map((l) => (
-          <li key={l.href}><Link href={l.href} className="text-[13.5px] text-paper/75 transition-colors hover:text-paper-bright">{l.name}</Link></li>
+          <li key={l.href}>
+            <Link href={l.href} aria-current={isActive(pathname, l.href) ? "page" : undefined}
+              className="navitem text-[13.5px] text-paper/75">
+              {l.name}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
@@ -85,7 +92,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
     return () => window.removeEventListener("keydown", onKey);
   }, [drop]);
 
-  const active = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const active = (href: string) => isActive(pathname, href);
 
   return (
     <header className={overlay ? "absolute inset-x-0 top-0 z-40" : "relative z-40 bg-ink"}>
@@ -115,7 +122,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
         </nav>
         <div className="ms-auto hidden items-center gap-[22px] lg:flex">
           <LangSwitch />
-          <Link href="/request-a-quote" className="btn btn-ghost !min-h-0 !px-[22px] !py-[13px]">{t("cta.quote")}</Link>
+          <Link href="/request-a-quote" aria-current={active("/request-a-quote") ? "page" : undefined} className="btn btn-ghost !min-h-0 !px-[22px] !py-[13px] aria-[current=page]:border-gold aria-[current=page]:text-gold-light">{t("cta.quote")}</Link>
         </div>
         <button
           ref={menuBtn}
@@ -157,7 +164,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
           {NAV.map((n) =>
             n.key === "products" ? (
               <details key={n.href} className="group border-b border-paper/12">
-                <summary className="flex cursor-pointer list-none items-center justify-between py-5 text-[26px] font-semibold tracking-[-0.03em] text-paper-bright [&::-webkit-details-marker]:hidden">
+                <summary className={`flex cursor-pointer list-none items-center justify-between py-5 text-[26px] font-semibold tracking-[-0.03em] [&::-webkit-details-marker]:hidden ${active(n.href) ? "text-gold" : "text-paper-bright"}`}>
                   {t(`nav.${n.key}`)}
                   <svg width="14" height="8" viewBox="0 0 10 6" fill="none" aria-hidden="true" className="transition-transform group-open:rotate-180">
                     <path d="m1 1 4 4 4-4" stroke="currentColor" strokeWidth="1.2" />
@@ -180,7 +187,7 @@ export function Header({ overlay = false, menu }: { overlay?: boolean; menu: Men
               </Link>
             ),
           )}
-          <Link href="/contact" className="border-b border-paper/12 py-5 text-[26px] font-semibold tracking-[-0.03em] text-paper-bright">
+          <Link href="/contact" aria-current={active("/contact") ? "page" : undefined} className="border-b border-paper/12 py-5 text-[26px] font-semibold tracking-[-0.03em] text-paper-bright aria-[current=page]:text-gold">
             {t("nav.contact")}
           </Link>
         </nav>

@@ -2,11 +2,14 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { company } from "@/content/company";
 import { Lockup } from "./Header";
+import { FooterLink } from "./FooterLink";
+
+type Row = [href: string, label: string, match?: string[]];
 
 export async function Footer() {
   const t = await getTranslations();
   const cols = [
-    { title: t("footer.company"), links: [["/about", "About HMH"], ["/markets", "Markets We Serve"], ["/contact", t("nav.contact")]] },
+    { title: t("footer.company"), links: [["/about", "About HMH"], ["/markets", "Markets We Serve"], ["/contact", t("nav.contact")]] as Row[] },
     {
       title: t("footer.services"),
       links: [
@@ -15,17 +18,17 @@ export async function Footer() {
         ["/services/distribution", "Wholesale & Distribution"],
         ["/services/private-label", "Private Label"],
         ["/services", "Global Sourcing"],
-      ],
+      ] as Row[],
     },
     {
       title: t("footer.products"),
       links: [
-        ["/products/dairy", "Dairy & Beverages"],
-        ["/products/grains-commodities", "Grains & Commodities"],
-        ["/products/oils-fats", "Oils, Honey & Spices"],
-        ["/products/canned-foods", "Canned & Confectionery"],
-        ["/products#non-food", "Non-Food"],
-      ],
+        ["/products/dairy", "Dairy & Beverages", ["/products/dairy", "/products/beverages", "/products/mineral-water"]],
+        ["/products/grains-commodities", "Grains & Commodities", ["/products/grains-commodities", "/products/agricultural-produce"]],
+        ["/products/oils-fats", "Oils, Honey & Spices", ["/products/oils-fats", "/products/honey", "/products/spices"]],
+        ["/products/canned-foods", "Canned & Confectionery", ["/products/canned-foods", "/products/biscuits-confectionery"]],
+        ["/products#non-food", "Non-Food", ["/products/cosmetics-personal-care", "/products/chemicals", "/products/industrial-products"]],
+      ] as Row[],
     },
   ];
 
@@ -44,8 +47,8 @@ export async function Footer() {
               <div key={c.title}>
                 <h2 className="t-label mb-[18px] text-gold">{c.title}</h2>
                 <ul className="flex flex-col gap-[11px] text-[13px] font-light">
-                  {c.links.map(([href, label]) => (
-                    <li key={label}><Link href={href} className="text-paper/75 transition-colors hover:text-gold-light">{label}</Link></li>
+                  {c.links.map(([href, label, match]) => (
+                    <li key={label}><FooterLink href={href} match={match} className="text-paper/75">{label}</FooterLink></li>
                   ))}
                 </ul>
               </div>
@@ -53,8 +56,8 @@ export async function Footer() {
             <div>
               <h2 className="t-label mb-[18px] text-gold">{t("footer.brands")}</h2>
               <ul className="flex flex-col gap-[11px] text-[13px] font-light">
-                <li><Link href="/brands/boon" className="text-paper/75 hover:text-gold-light">Boon</Link></li>
-                <li><Link href="/brands/abu-koora" className="text-paper/75 hover:text-gold-light">Abu Koora</Link></li>
+                <li><FooterLink href="/brands/boon" match={["/brands/boon", "/products/beverages/boon-"]} className="text-paper/75">Boon</FooterLink></li>
+                <li><FooterLink href="/brands/abu-koora" match={["/brands/abu-koora", "/products/biscuits-confectionery/abu-koora-"]} className="text-paper/75">Abu Koora</FooterLink></li>
               </ul>
               <h2 className="t-label mb-[15px] mt-7 text-gold">{t("footer.contact")}</h2>
               <p className="text-[13px] font-light leading-[1.72]">
@@ -73,8 +76,8 @@ export async function Footer() {
             <a href={company.saabify} target="_blank" rel="noopener" className="font-medium text-gold hover:text-gold-light">Saabify</a>
           </span>
           <span className="flex gap-6">
-            <Link href="/privacy-policy" className="text-paper/55 hover:text-gold-light">{t("footer.privacy")}</Link>
-            <Link href="/terms" className="text-paper/55 hover:text-gold-light">{t("footer.terms")}</Link>
+            <FooterLink href="/privacy-policy" className="text-paper/55">{t("footer.privacy")}</FooterLink>
+            <FooterLink href="/terms" className="text-paper/55">{t("footer.terms")}</FooterLink>
             <a href="#top" className="text-paper/55 hover:text-gold-light">{t("footer.top")}</a>
           </span>
         </div>
