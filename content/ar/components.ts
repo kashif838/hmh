@@ -67,6 +67,7 @@ export const components: Record<string, string> = {
   "Bonfood logo": "شعار بون فود",
   "Baba Cook logo, English": "شعار بابا كوك، النسخة الإنجليزية",
   "Baba Cook logo, Arabic": "شعار بابا كوك، النسخة العربية",
+  "Boon logo": "شعار بون",
   "Abu Koora logo": "شعار أبو كورة",
   "HMH own brand": "علامة تابعة لإتش إم إتش",
   "The range": "تشكيلة المنتجات",

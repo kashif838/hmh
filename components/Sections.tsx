@@ -270,13 +270,14 @@ const LOGOS: { name: string; images: { src: string; alt: string; w: number; h: n
       { src: "/images/babacook-ar.png", alt: "Baba Cook logo, Arabic", w: 759, h: 604 },
     ],
   },
+  { name: "Boon", images: [{ src: "/images/boon-logo.png", alt: "Boon logo", w: 488, h: 316 }] },
   { name: "Abu Koora", images: [{ src: "/images/abukoora-logo.png", alt: "Abu Koora logo", w: 560, h: 243 }] },
 ];
 
 export function LogoWall() {
   const tr = useCopy();
   return (
-    <ul className="m-0 grid list-none grid-cols-1 gap-px border border-ink-3/13 bg-ink-3/13 p-0 sm:grid-cols-3" aria-label={tr("HMH brands")}>
+    <ul className="m-0 grid list-none grid-cols-1 gap-px border border-ink-3/13 bg-ink-3/13 p-0 sm:grid-cols-2 lg:grid-cols-4" aria-label={tr("HMH brands")}>
       {LOGOS.map((l, i) => (
         <li key={l.name} data-reveal className="flex h-[180px] items-center justify-center gap-6 bg-white px-8 lg:h-[220px]" style={{ transitionDelay: `${i * 0.06}s` }}>
           {l.images.map((img) => (
