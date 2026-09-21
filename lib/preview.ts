@@ -12,6 +12,9 @@ export const OPEN = [
   "/services", "/services/private-label", "/services/import-export", "/services/distribution",
 ];
 
+/** Product pages shown during the preview: the Boon and Abu Koora ranges. */
+const OPEN_PREFIXES = ["/products/beverages/boon-", "/products/biscuits-confectionery/abu-koora-"];
+
 const SECTIONS: [path: string, section: string][] = [
   ["/about", "/#about"],
   ["/services", "/#capabilities"],
@@ -27,7 +30,7 @@ const SECTIONS: [path: string, section: string][] = [
 export function previewHref(href: string): string {
   if (!HOME_ONLY || !href.startsWith("/")) return href;
   const path = href.split("#")[0].replace(/\/$/, "") || "/";
-  if (path === "/" || OPEN.includes(path)) return href;
+  if (path === "/" || OPEN.includes(path) || OPEN_PREFIXES.some((p) => path.startsWith(p))) return href;
   const hit = SECTIONS.find(([p]) => path === p || path.startsWith(p + "/"));
   return hit ? hit[1] : "/";
 }

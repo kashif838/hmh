@@ -8,7 +8,7 @@ import { AR_LIVE } from "@/i18n/routing";
 import { HOME_ONLY, OPEN } from "@/lib/preview";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = HOME_ONLY ? ["/", ...OPEN] : [
+  const paths = HOME_ONLY ? ["/", ...OPEN, ...products.map((p) => `/products/${p.category}/${p.slug}`)] : [
     "/", "/about", "/services", "/markets", "/products", "/brands",
     "/request-a-quote", "/partner-with-us", "/contact", "/privacy-policy", "/terms",
     ...servicePages.map((s) => `/services/${s.slug}`),
